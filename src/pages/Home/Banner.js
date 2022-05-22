@@ -6,9 +6,9 @@ const Banner = () => {
       
     <div className="px-2 py-3 container mx-auto flex justify-center items-center pt-5 flex-col-reverse lg:flex-row">
       <div className=" flex-1 flex justify-center">
-        <div className="text-center">
-          <h1 className=" font-bold text-6xl text-primary">BICYCLE LIFE</h1>
-          <h1 className="font-bold text-2xl text-secondary lg:text-3xl">
+        <div className="text-center py-5">
+          <h1 className=" font-bold text-6xl lg:text-8xl text-primary">BICYCLE LIFE</h1>
+          <h1 className="font-bold text-2xl  text-secondary lg:text-4xl">
             WE PROVIDE BEST PARTS
           </h1>
           <p className=" pt-5 text-justify lg:text-center text-md font-bold">

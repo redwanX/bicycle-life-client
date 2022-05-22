@@ -1,0 +1,57 @@
+[
+    {   
+        "_id": 1,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    },
+    {   
+        "_id":2,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    },
+    {   
+        "_id":3,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    },
+    {   
+        "_id":4,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    },
+    {   
+        "_id":5,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    },
+    {   
+        "_id":6,
+        "name": "Anti-Scratch Bike Chain",
+        "image": "https://ueeshop.ly200-cdn.com/u_file/UPAU/UPAU109/2203/products/23/2e359af20b.jpg",
+        "desc": "SLC bike chain offers uncompromising quality. Compatible with SRAM, Shimano, and other derailleur systems in the market. Special treatment on chain plate evenly brings up a performance on anti-scratch, easy maintenance, multi-colors available.",
+        "moq" : 100,
+        "quantity": 1000,
+        "price": 20
+    }
+]
+  
