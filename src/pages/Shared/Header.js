@@ -19,7 +19,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="text-xl font-bold text-secondary">Bicycle-Life</a>
+                <a className="text-xl font-bold text-primary">BICYCLE LIFE</a>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
