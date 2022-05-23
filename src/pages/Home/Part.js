@@ -10,8 +10,8 @@ const Part = ({part}) => {
     <figure><img className="w-full" src={image} alt="Shoes" /></figure>
     <div className="card-body mb-10">
       <div className="lg:flex block justify-between w-100">
-      <h2 className="card-title text-primary text-2xl font-bold">{name}</h2>
-      <h2 className="card-title text-primary text-2xl flex justify-center">${price}</h2>
+      <h2 className="card-title text-primary text-xl lg:text-2xl text-center font-bold">{name}</h2>
+      <h2 className="card-title text-primary text-xl lg:text-2xl  flex justify-center">${price}</h2>
       </div>
       <p className="text-md text-secondary font-semibold"><span className="text-primary">Minimum Order: </span>{moq}</p>
       <p className="text-md text-secondary font-semibold"><span className="text-primary">Available Quantity: </span>{quantity}</p>
