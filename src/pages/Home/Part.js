@@ -1,12 +1,12 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Part = ({part}) => {
-    const {name,desc,image,moq,quantity,price}=part;
-    console.log(part);
+    const {_id,name,desc,image,moq,quantity,price}=part;
+    const navigate = useNavigate()
   return (
     <div className="lg:px-0 px-4">
-      
-    <div className="card w-full min-h-16 bg-base-100 relatives shadow-xl">
+    <div className="card card-compact rounded-none border-2 bg-base-100 w-full relative shadow-xl">
     <figure><img className="w-full" src={image} alt="Shoes" /></figure>
     <div className="card-body mb-10">
       <div className="lg:flex block justify-between w-100">
@@ -18,7 +18,7 @@ const Part = ({part}) => {
       <p className=" text-xl text-secondary  font-semibold"><span className="text-primary">Available Quantity: </span>{quantity}</p>
     </div>
     <div className="justify-end absolute bottom-0 w-full">
-        <button className="btn rounded-none btn-primary w-full">Purchase</button>
+        <button onClick={()=>navigate(`/purchase/${_id}`)} className="btn rounded-none btn-secondary w-full">Purchase</button>
       </div>
   </div>
     </div>
