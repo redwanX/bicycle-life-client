@@ -5,10 +5,10 @@ import Summary from './Summary'
 
 const Home = () => {
   return (
-    <div>
+    <div className='container mx-auto p-4'>
       <Banner></Banner>
-      <Parts></Parts>
       <Summary></Summary>
+      <Parts></Parts>
     </div>
   )
 }
