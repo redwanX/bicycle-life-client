@@ -1,4 +1,3 @@
-import { data } from 'autoprefixer';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
@@ -124,12 +123,13 @@ const Purchase = () => {
               <span>Quantity Must between minimum order quantity and available quantity</span>
             </div>
           </div>
-          :""
+          :<div className="w-full max-w-xs lg:max-w-2xl">
+          <label className="label">
+            <span className="label-text font-bold text-primary">TOTAL COST:</span>
+          </label>
+          <input type="text" value={(parseInt(price) * qty).toString()+'$'} readOnly disabled className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+        </div>
           }
-          
-          <button className='btn btn-md mt-4' type="submit"  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
-
-
           </form>
         </div>
 

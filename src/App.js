@@ -10,9 +10,9 @@ import { ToastContainer } from 'react-toastify';
 import Dashboard from './pages/Dashboard/Dashboard';
 import RequireAuth from './pages/Authentication/RequireAuth';
 import Purchase from './pages/Purchase/Purchase';
-import MyOrder from './pages/Dashboard/MyOrder';
-import AddReview from './pages/Dashboard/AddReview';
-import MyProfile from './pages/Dashboard/MyProfile';
+import MyOrder from './pages/Dashboard/Order/MyOrder';
+import AddReview from './pages/Dashboard/AddReview/AddReview';
+import MyProfile from './pages/Dashboard/MyProfile/MyProfile';
 
 function App() {
   return (
