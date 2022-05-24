@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading'
@@ -6,10 +6,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import axios from 'axios';
 const SocialAuth = () => {
-  //Hooks
+   //Hooks
   const navigate = useNavigate();
   const location =useLocation();
   const [signInwithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [loadToken,setLoadToken] = useState(false);
 
   let from = location.state?.from?.pathname || "/";
     
@@ -20,12 +21,20 @@ const SocialAuth = () => {
       }
     },[error]);
 
+  //If user wasnt login then take back to place form where it came (checkout)
   useEffect(()=>{
-      const tokenUpdate=async()=>{
-        if(user){
-          navigate(from,{replace:true});
-        }
+    const tokenUpdate = async()=>{ 
+      if(user){
+        setLoadToken(true);
+        const email = user?.user?.email;
+        const currentUser ={email,role:"user"}
+        const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
+        
+        setLoadToken(false);
+        localStorage.setItem('authToken',data.token)
+        navigate(from,{replace:true});
       }
+    }
       tokenUpdate();
     },[user]);
 
@@ -33,7 +42,7 @@ const SocialAuth = () => {
     await signInwithGoogle();
 }
   //Loding
-  if(loading){
+  if(loading ||setLoadToken){
       <Loading></Loading>
     }
  

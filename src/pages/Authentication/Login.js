@@ -4,16 +4,15 @@ import {useForm} from 'react-hook-form'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { toast } from 'react-toastify';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {  useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import axios from 'axios';
 const Login = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
   const [userAuthenticate,loadingAuthenticate] = useAuthState(auth)
-  const [tokenloading,setTokenLoading] = useState(false);
   const [email,setEmail] = useState('');
-  const emailRef = useRef('');
+  const [loadToken,setLoadToken] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const [
@@ -22,11 +21,17 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
- 
   let from = location.state?.from?.pathname || "/";
   useEffect(()=>{
     const tokenUpdate = async()=>{ 
     if(userAuthenticate){
+      setLoadToken(true);
+      const email = userAuthenticate.email;
+      const currentUser ={email,role:"user"}
+      const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
+      
+      setLoadToken(false);
+      localStorage.setItem('authToken',data.token)
       navigate(from,{replace:true});
     }
   }
@@ -40,14 +45,9 @@ const Login = () => {
     }
   },[error]);
 
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) => setEmail(value.email));
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
 
-
-  if(loading||loadingAuthenticate||tokenloading){
+  if(loading||loadingAuthenticate||loadToken){
     return <Loading></Loading>
   }
   const handleResetPassword = async ()=>{

@@ -26,8 +26,9 @@ const Purchase = () => {
   const {_id,image,name,price,desc,moq,quantity} = part;
  
   const updateQuantity = event =>{
-    const number = event.target.value || 0
-    setQuantity(parseInt(number));
+    const number =parseInt(event.target.value)|| 0;
+    console.log(number)
+    setQuantity(number);
   }
 
   return (
@@ -84,13 +85,13 @@ const Purchase = () => {
             <label className="w-full max-w-xs lg:max-w-2xl input-group">
               
               <button type='button' className='btn btn-primary' disabled={qty===0?true:false} onClick={()=>setQuantity(Math.max(0,qty-1))} >-</button>
-              <input type="number" value={qty===-100?moq:qty} onChange={updateQuantity} min="0" required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+              <input type="number" value={(qty===-100?moq:qty).toString()} onChange={updateQuantity} required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
               <button type='button' className='btn btn-primary' onClick={()=>setQuantity(Math.max(0,qty+1))} >-</button>
             </label>
           </div>
           {
             qty<parseInt(moq)||qty>parseInt(quantity)?
-            <div class="my-5 text-center alert alert-error rounded-lg shadow-lg">
+            <div className="my-5 text-center alert alert-error rounded-lg shadow-lg">
             <div>
               <span>Quantity Must between minimum order quantity and available quantity</span>
             </div>

@@ -1,17 +1,21 @@
 import { signOut } from 'firebase/auth';
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import auth from '../../firebase.init';
+import { CgSidebar } from "react-icons/cg";
 
 const Header = () => {
-    const [user] = useAuthState(auth);
+    const location = useLocation();
+    console.log(location)
+    const [user,loading] = useAuthState(auth);
     const logOut=()=>{
+        localStorage.removeItem('authToken')
         signOut(auth);
     }
     const menuItems = <>
     {user?
-     <div className='my-auto font-bold text-primary'><span className='font-bold'>Hello {user.displayName}!</span></div>
+     <div className='my-auto font-bold text-primary'><span className='font-bold'>Hello {user.displayName || user?.user?.displayName || "USER"}!</span></div>
     :""}
     <li className='font-bold'><Link to="/">Home</Link></li>
     <li className='font-bold'><Link to="/blog">Blog</Link></li>
@@ -44,6 +48,14 @@ const Header = () => {
                     {menuItems}
                 </ul>
             </div>
+            {
+                location.pathname ==='/dashboard'?
+                <div className="navbar-end">
+                <label tabIndex="1" htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden">
+                    <CgSidebar className='w-5 h-5'></CgSidebar>
+                </label>
+            </div>:""
+            }
         </div>
   )
 }

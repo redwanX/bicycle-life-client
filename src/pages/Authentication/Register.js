@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SocialAuth from './SocialAuth'
 import {useForm} from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,43 +6,55 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerificati
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading';
+import axios from 'axios';
 const Register = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
   const [userAuthenticate,loadingAuthenticate] = useAuthState(auth)
-  const navigate = useNavigate()
-  const [
-    createUserWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useCreateUserWithEmailAndPassword(auth);
-  const [sendEmailVerification, sending, emailError] = useSendEmailVerification(auth);
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  
-  useEffect(()=>{
-    if(error){
-      toast(error?.message)
-    }
-  },[error]);
-  useEffect(()=>{
-    if(userAuthenticate){
-        navigate('/')
-    }
-  },[userAuthenticate]);
-  useEffect(()=>{
-    if(user){
-      console.log(user);
-      if(!emailError){
-        toast('Verification Email Sent, Please Check Your Email For Confirmation Link')
+  const [loadToken,setLoadToken] = useState(false);
+    const navigate = useNavigate()
+    const [
+      createUserWithEmailAndPassword,
+      user,
+      loading,
+      error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [sendEmailVerification, sending, emailError] = useSendEmailVerification(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    
+    
+    useEffect(()=>{
+      const tokenUpdate = async()=>{ 
+      if(userAuthenticate){
+        setLoadToken(true)
+        const email = userAuthenticate.email;
+        const currentUser ={email,role:"user"}
+        const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
+        setLoadToken(false);
+        localStorage.setItem('authToken',data.token)
+        navigate('/');
       }
-      navigate('/');
-
     }
-  },[user]);
-  if(loading||loadingAuthenticate||sending||updating){
-    return <Loading></Loading>
-  }
+      tokenUpdate();
+    },[userAuthenticate]);
+  
+
+    useEffect(()=>{
+      if(error){
+        toast(error?.message)
+      }
+    },[error]);
+    useEffect(()=>{
+      if(user){
+        if(!emailError){
+          toast('Verification Email Sent, Please Check Your Email For Confirmation Link')
+        }
+        navigate('/');
+
+      }
+    },[user]);
+    if(loading||loadingAuthenticate||sending||updating){
+      return <Loading></Loading>
+    }
   const onSubmit = async(data) => {
     const name = data.name;
     const email = data.email;
