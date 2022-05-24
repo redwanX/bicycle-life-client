@@ -1,8 +1,11 @@
 import { data } from 'autoprefixer';
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom'
+import { Navigate, useLocation, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -10,6 +13,7 @@ const Purchase = () => {
   const [user,loading] = useAuthState(auth);
   const {id} = useParams();
   const [qty,setQuantity] = useState(-100)
+  const location = useLocation()
   const { data: part, isLoading } = useQuery(['singlepart'], () => fetch(`http://localhost:5000/part/${id}`)
   .then(res => res.json()))
   useEffect(()=>{
@@ -29,6 +33,30 @@ const Purchase = () => {
     const number =parseInt(event.target.value)|| 0;
     console.log(number)
     setQuantity(number);
+  }
+  const order = (event) =>{
+    event.preventDefault()
+    const name= user.name;
+    const email= user.email;
+    const address= event.target.address.value;
+    const phone= event.target.phone.value;
+    const item = part;
+    const authToken = localStorage.getItem('authToken');
+    const body = {
+      name,email,address,phone,qty,item}
+      axios.post(`http://localhost:5000/order`,body,{
+        headers:{authorization: `Bearer ${authToken}`}
+      })
+      .then(res=>{
+        toast('order placed!');
+      })
+      .catch(err=>{
+        if(err.response.status ===401 || err.response.status ===403){
+          toast("YOU ARE NOT AUTHORIZED!");
+          signOut(auth)
+          return <Navigate to="/login" state={{ from: location }} replace />
+        }
+      })
   }
 
   return (
@@ -50,7 +78,7 @@ const Purchase = () => {
         <span className='block text-xl mt-12 font-bold text-secondary text-center '>Fill This Form To Continue</span>
         <hr />
         <div className='my-12 flex flex-col justify-center items-center'>
-          <form className='w-full max-w-xs lg:max-w-2xl'>
+          <form  onSubmit={order} className='w-full max-w-xs lg:max-w-2xl'>
           <div className="w-full max-w-xs lg:max-w-2xl">
             <label className="label">
               <span className="label-text font-bold text-primary">Name</span>
@@ -69,13 +97,13 @@ const Purchase = () => {
             <label className="label">
               <span className="label-text font-bold text-primary">Phone</span>
             </label>
-            <input type="number" placeholder='Phone Number' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+            <input name="phone" type="number" placeholder='Phone Number' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
           </div>
           <div className="w-full max-w-xs lg:max-w-2xl">
             <label className="label">
               <span className="label-text font-bold text-primary">Address</span>
             </label>
-            <input type="text" placeholder='Address' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+            <input name="address" type="text" placeholder='Address' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
           </div>
 
           <div className="w-full max-w-xs lg:max-w-2xl form-control">
@@ -99,7 +127,7 @@ const Purchase = () => {
           :""
           }
           
-          <button className='btn btn-md mt-4'  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
+          <button className='btn btn-md mt-4' type="submit"  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
 
 
           </form>
