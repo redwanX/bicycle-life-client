@@ -61,18 +61,6 @@ const MyOrder = () => {
     <tbody>
         {orders.map((order,i)=><Order key={order._id} index={i} item={order}></Order>)}
     </tbody>
-    <tfoot>
-      <tr>
-        <th></th> 
-        <th>Image</th> 
-        <th>Name</th> 
-        <th>Quantity</th> 
-        <th>Price/Unit</th> 
-        <th>Total Price</th>
-        <th>Transaction ID</th> 
-        <th>Action</th>
-      </tr>
-    </tfoot>
   </table>
 </div>
 

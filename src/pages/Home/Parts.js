@@ -16,7 +16,7 @@ const Parts = () => {
             <div className='text-4xl pb-5 font-bold text-primary text-center '>PARTS</div>
             <hr /> 
             <div className='pt-5 grid grid-cols-1 lg:grid-cols-3 gap-4'>
-                {[...parts]?.reverse().slice(0,6)?.map((part)=><Part key={part._id} part={part}></Part>)}
+                {parts&&[...parts]?.reverse().slice(0,6)?.map((part)=><Part key={part._id} part={part}></Part>)}
             </div>
     </div>
   )

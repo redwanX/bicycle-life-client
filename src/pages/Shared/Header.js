@@ -1,12 +1,13 @@
 import { signOut } from 'firebase/auth';
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import auth from '../../firebase.init';
 import { CgSidebar } from "react-icons/cg";
 
 const Header = () => {
     const [user,loading] = useAuthState(auth);
+    const location =useLocation();
     const logOut=()=>{
         localStorage.removeItem('authToken')
         signOut(auth);
@@ -46,11 +47,16 @@ const Header = () => {
                     {menuItems}
                 </ul>
             </div>
+            {
+                location.pathname.includes('dashboard')?
+                
             <div className="navbar-end lg:hidden">
-                <label tabIndex="1" htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden">
-                    <CgSidebar className='w-5 h-5'></CgSidebar>
-                </label>
+            <label tabIndex="1" htmlFor="dashboard-drawer" className="btn btn-ghost lg:hidden">
+                <CgSidebar className='w-5 h-5'></CgSidebar>
+            </label>
             </div>
+            :""
+            }
         </div>
   )
 }

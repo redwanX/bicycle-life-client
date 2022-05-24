@@ -14,7 +14,8 @@ const Order = (props) => {
     <td>{price}$</td>
     <td>{parseInt(price) * parseInt(qty)}$</td>
     <td>{status==="unpaid"?"unpaid":"39435835jc"}</td>
-    <td>{status ==="unpaid"? <button className='btn btn-primary border-0 w-full'>Pay</button>:<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>PAID</button>}</td>
+    <td>{status ==="unpaid"? <><button className='btn btn-primary border-0 w-full'>Pay</button><button className='btn btn-primary border-0 w-full'>Pay</button></>:<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>PAID</button>}</td>
+    
   </tr>
   )
 }

@@ -63,7 +63,7 @@ const AddReview = () => {
               <span className="label-text">Rate Us</span>
             </label>
             <label className="input-group w-full">
-              <input type="number" name="rating" value={isNaN(parseInt(rating))?"":Math.floor(parseInt(rating))} onChange={updateRating} required className="input input-bordered w-full" />
+              <input type="number" placeholder='1 to 5' name="rating" value={isNaN(parseInt(rating))?"":Math.floor(parseInt(rating))} onChange={updateRating} required className="input input-bordered w-full" />
               <span className='bg-primary w-1/2 text-white'>Out of 5</span>
             </label>
           </div>

@@ -35,7 +35,7 @@ const Purchase = () => {
   }
   const order = (event) =>{
     event.preventDefault()
-    const name= user.name;
+    const name= user.displayName;
     const email= user.email;
     const address= event.target.address.value;
     const phone= event.target.phone.value;
@@ -130,6 +130,8 @@ const Purchase = () => {
           <input type="text" value={(parseInt(price) * qty).toString()+'$'} readOnly disabled className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
         </div>
           }
+          <button className='btn btn-md mt-4' type="submit"  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
+
           </form>
         </div>
 
