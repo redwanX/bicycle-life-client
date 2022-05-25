@@ -27,7 +27,7 @@ const SocialAuth = () => {
       if(user){
         setLoadToken(true);
         const email = user?.user?.email;
-        const currentUser ={email,role:"user"}
+        const currentUser ={email}
         const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
         
         setLoadToken(false);

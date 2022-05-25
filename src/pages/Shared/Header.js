@@ -1,16 +1,18 @@
 import { signOut } from 'firebase/auth';
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init';
 import { CgSidebar } from "react-icons/cg";
 
 const Header = () => {
     const [user,loading] = useAuthState(auth);
     const location =useLocation();
+    const navigate = useNavigate();
     const logOut=()=>{
         localStorage.removeItem('authToken')
         sessionStorage.removeItem('name')
+        navigate('/');
         signOut(auth);
     }
     const menuItems = <>

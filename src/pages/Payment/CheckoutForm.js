@@ -66,13 +66,12 @@ const CheckoutForm = ({ordersById}) => {
           setProcessing(false);
         }
       else{
-        console.log(paymentIntent)
         setSuccess(true);
         setTransId(paymentIntent.id);
         const authToken = localStorage.getItem('authToken');
         const payment_id=paymentIntent.id;
         const body = {...ordersById,payment_id} 
-        console.log(body);
+        
         axios.put(`http://localhost:5000/updateOrder/${body._id}`,body,{
             headers:{authorization: `Bearer ${authToken}`}
           })
@@ -113,7 +112,7 @@ const CheckoutForm = ({ordersById}) => {
     <h1>
     {processing?<button disabled className="btn loading w-full">Loading</button>:""}</h1>
     <h1>
-    {transId ? transId:""}
+    {transId ? <div  className="btn hover:bg-accent w-full text-primary bg-accent">Transaction ID  : <span className='text-secondary'>{transId}</span></div>:""}
     </h1>
   </form>
 

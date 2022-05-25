@@ -81,38 +81,38 @@ const MyProfile = () => {
 
     <div className='w-full max-w-xs lg:max-w-2xl flex flex-col lg:flex-row'>
       <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>NAME</span>
-      <span className='block bg-base-200 p-4 w-full lg:w-3/4'>{user && user?.displayName}</span>
+      <span className='block bg-base-200 p-4 w-full text-center lg:w-3/4'>{user && user?.displayName}</span>
     </div>
     <div className='w-full max-w-xs lg:max-w-2xl flex flex-col lg:flex-row'>
       <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EMAIL</span>
-      <span className='block bg-base-200 p-4 w-full  lg:w-3/4'>{user && (user?.email||user?.user?.email)}</span>
+      <span className='block bg-base-200 p-4 w-full text-center lg:w-3/4'>{user && (user?.email||user?.user?.email)}</span>
     </div>
     <form onSubmit={update} className='w-full mb-5 max-w-xs lg:max-w-2xl'>
     <div className=" form-control w-full max-w-xs lg:max-w-2xl">
       <label className="label">
-        <span className="label-text font-bold text-primary">Address</span>
+        <span className="label-text font-bold text-primary">Education</span>
       </label>
-      <textarea disabled ={isEdit} value={profile?.address||""} onChange={updateProfile}  className="textarea textarea-bordered" name="address" required placeholder="Description"></textarea>
+      <textarea disabled ={isEdit} value={profile?.education||""} onChange={updateProfile}  className="textarea textarea-bordered" name="education"  placeholder="education"></textarea>
     </div>
     
     <div className="w-full max-w-xs lg:max-w-2xl">
             <label className="label">
               <span className="label-text font-bold text-primary">City</span>
             </label>
-            <input disabled ={isEdit} value={profile?.city||""}  onChange={updateProfile} name="city" type="text" placeholder='City' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+            <input disabled ={isEdit} value={profile?.city||""}  onChange={updateProfile} name="city" type="text" placeholder='City'  className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
           </div>
     
     <div className="w-full max-w-xs lg:max-w-2xl">
             <label className="label">
               <span className="label-text font-bold text-primary">Phone</span>
             </label>
-            <input disabled ={isEdit} value={profile?.phone||""}  onChange={updateProfile} name="phone" type="number" placeholder='Phone Number' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+            <input disabled ={isEdit} value={profile?.phone||""}  onChange={updateProfile} name="phone" type="number" placeholder='Phone Number'  className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
           </div>
     <div className="w-full max-w-xs lg:max-w-2xl">
             <label className="label">
               <span className="label-text font-bold text-primary">LinkdIn</span>
             </label>
-            <input disabled ={isEdit} value={profile?.linkedin||""}  onChange={updateProfile} name="linkedin" type="text" placeholder='LinkedIn Profile Link' required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
+            <input disabled ={isEdit} value={profile?.linkedin||""}  onChange={updateProfile} name="linkedin" type="text" placeholder='LinkedIn Profile Link'  className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
           </div>
     {
       isEdit?

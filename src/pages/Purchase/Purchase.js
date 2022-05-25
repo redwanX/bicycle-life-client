@@ -52,7 +52,7 @@ const Purchase = () => {
       })
       .then(res=>{
         toast('order placed!');
-        navigate('/dashboard');
+        navigate('/dashboard/order');
       })
       .catch(err=>{
         if(err.response.status ===401 || err.response.status ===403){
@@ -105,9 +105,9 @@ const Purchase = () => {
             </label>
             <label className="w-full max-w-xs lg:max-w-2xl input-group">
               
-              <button type='button' className='btn btn-primary' disabled={qty===0?true:false} onClick={()=>setQuantity(Math.max(0,qty-1))} >-</button>
+              <button type='button' className='btn btn-primary' disabled={qty===0?true:false} onClick={()=>setQuantity(Math.max(0,parseInt(qty)-1))} >-</button>
               <input type="number" value={(qty===-100?moq:qty).toString()} onChange={updateQuantity} required className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
-              <button type='button' className='btn btn-primary' onClick={()=>setQuantity(Math.max(0,qty+1))} >-</button>
+              <button type='button' className='btn btn-primary' onClick={()=>setQuantity(Math.max(0,parseInt(qty)+1))} >+</button>
             </label>
           </div>
           {

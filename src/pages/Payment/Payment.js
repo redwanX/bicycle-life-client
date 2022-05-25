@@ -94,7 +94,7 @@ if(loading||isLoading){
         <div className='flex-1'>
           <div className='mt-12 mx-auto card w-full max-w-xs lg:max-w-2xl bg-accent shadow-xl '>
           <div className='card-body'>
-              <div className='card-title'>PLEASE PAY: {(parseInt(ordersById?.qty)*parseInt(ordersById?.item?.price)).toString()+'$'}</div>
+              <div className='card-title mb-2 text-primary'>PLEASE PAY: {(parseInt(ordersById?.qty)*parseInt(ordersById?.item?.price)).toString()+'$'}</div>
           <Elements  stripe={stripePromise}>
             <CheckoutForm ordersById={ordersById} />
         </Elements>
