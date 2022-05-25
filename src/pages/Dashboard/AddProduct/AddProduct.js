@@ -40,9 +40,9 @@ const onSubmit= async(data)=>{
 }
 
 return (
-    <div className='my-12 container mx-auto'>
-  <div className='text-2xl py-5 font-bold text-secondary text-center '>ORDERS</div>
-    <hr /> 
+    <div className=' mb-12 container mx-auto'>
+  <div className='text-2xl py-5 font-bold text-secondary text-center '>ADD PRODUCT</div>
+      <hr />
         <div className='my-12 flex flex-col justify-center items-center'>
           <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-xs lg:max-w-2xl'>
           
