@@ -5,7 +5,7 @@ import { MdDoneAll  } from "react-icons/md";
 const SingleOrder = (props) => {
     const {image,name,price} = props.item.item;
     const {_id,qty,status} = props.item;
-    const {setChangeOrder }= props
+    const {setChangeOrder,setDeleteOrder }= props
     const trans_Id = props.item?.payment_id? props.item.payment_id:"";
     const navigate = useNavigate()
     return (
@@ -14,17 +14,20 @@ const SingleOrder = (props) => {
     <td><img src={image} style={{width:"75px"}} alt="" /></td>
     <td>{name}</td>
     <td>{qty}</td>
-    <td>{price}$</td>
     <td>{parseInt(price) * parseInt(qty)}$</td>
     <td>{status==="unpaid"?"N/A":trans_Id}</td>
+    <td>{status==="unpaid"?<p className='text-red-400 font-bold'>UNPAID</p>:<p className='text-primary font-bold'>PAID</p>}</td>
     <td>{status ==="unpaid"?<>
-        <p>UNPAID</p>
+        <label onClick={() => setDeleteOrder(_id)} htmlFor="delete-order-modal" className='btn btn-sm btn-error border-0 mb-1'>DELETE</label>
+    
         </>
         :
         status ==="approved"?
-        "SHIPPED"
+        <p className='text-primary font-bold'>
+           SHIPPED 
+        </p>
         :
-        <label onClick={() => setChangeOrder(props.item)} htmlFor="change-order-modal" className='btn btn-sm btn-error border-0 mb-1'>SHIP</label>}</td>
+        <label onClick={() => setChangeOrder(props.item)} htmlFor="change-order-modal" className='btn btn-sm bg-primary border-0 mb-1'>SHIP</label>}</td>
     
   </tr>
   )

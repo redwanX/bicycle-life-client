@@ -22,6 +22,7 @@ const Header = () => {
     :""}
     <li className='font-bold'><Link to="/">Home</Link></li>
     <li className='font-bold'><Link to="/blog">Blog</Link></li>
+    <li className='font-bold'><Link to="/portfolio">Portfolio</Link></li>
     {user?
     <>
     <li className='font-bold'><Link to="/dashboard">Dashboard</Link></li>

@@ -43,9 +43,9 @@ return (
   <input type="checkbox" id="change-order-modal" className="modal-toggle" />
  <div className="modal p-5 modal-bottom sm:modal-middle">
      <div className="modal-box bg-accent">
-         <h3 className="font-bold text-lg text-center text-red-500">Are you sure you want to Ship This Order!</h3>
+         <h3 className="font-bold text-lg text-center text-primary">Are you sure you want to Ship This Order!</h3>
          <div className="modal-action items-center">
-         <button className="btn btn-sm btn-primary" onClick={handleDelete}>SHIP</button>
+         <button className="btn btn-sm border-0 bg-primary" onClick={handleDelete}>SHIP</button>
              <label htmlFor="change-order-modal" className="btn btn-sm">Cancel</label>
          </div>
      </div>

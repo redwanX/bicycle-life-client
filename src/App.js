@@ -19,6 +19,7 @@ import MakeAdmin from './pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
 import ManageProducts from './pages/Dashboard/ManageProducts/ManageProducts';
 import ManageOrders from './pages/Dashboard/ManageOrders/ManageOrders';
+import Portfolio from './pages/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>

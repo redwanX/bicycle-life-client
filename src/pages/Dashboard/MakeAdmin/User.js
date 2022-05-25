@@ -9,7 +9,7 @@ const User = (props) => {
     <th>{props.index+1}</th>
     <td>{email}</td>
     <td>{role}</td>
-    <td>{role==='admin'?"ALREADY ADMIN":<label onClick={() => setToAdmin(email)} htmlFor="admin-confirm-modal" className='btn btn-sm btn-primary text-white border-0 mb-1'>Make Admin</label>}</td>
+    <td>{role==='admin'?<p className='text-primary font-bold'>ALREADY ADMIN</p>:<label onClick={() => setToAdmin(email)} htmlFor="admin-confirm-modal" className='btn btn-sm btn-primary text-white border-0 mb-1'>Make Admin</label>}</td>
   </tr>
   )
 }
