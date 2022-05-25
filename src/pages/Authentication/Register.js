@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
 const Register = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register,getValues, handleSubmit, watch, formState: { errors } } = useForm();
   const [userAuthenticate,loadingAuthenticate] = useAuthState(auth)
   const [loadToken,setLoadToken] = useState(false);
     const navigate = useNavigate()
@@ -32,9 +32,10 @@ const Register = () => {
         const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
         setLoadToken(false);
         localStorage.setItem('authToken',data.token)
-        signOut(auth)
-        toast("Thank You For SignUp,Please Login")
-        navigate('/login');
+        sessionStorage.setItem('name',getValues('name'));
+        //signOut(auth)
+        //toast("Thank You For SignUp,Please Login")
+        navigate('/');
       }
     }
       tokenUpdate();

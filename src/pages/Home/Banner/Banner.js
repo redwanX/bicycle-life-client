@@ -1,8 +1,8 @@
 import React from "react";
-import banner from "../../Images/Banner/banner.png";
+import banner from "../../../Images/Banner/banner.png";
 const Banner = () => {
   return (
-    <div className=" mx-auto bg-base-200">
+    <div className=" mx-auto bg-accent">
     <div className="px-2 py-3 container mx-auto flex justify-center items-center pt-5 flex-col-reverse lg:flex-row">
       <div className=" flex-1 flex justify-center">
         <div className="text-center py-5">

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { signOut } from 'firebase/auth';
 import { Navigate, useLocation } from 'react-router-dom';
+import profilePic from '../../../Images/Profile/profile.png'
 const MyProfile = () => {
   const [user,loading] = useAuthState(auth);
   const [isEdit,setIsEdit] = useState(true);
@@ -66,8 +67,8 @@ const MyProfile = () => {
   </div>
   <div className='flex justify-center items-center lg:-mt-20 -mt-10'>
   <div className="avatar flex justify-center">
-    <div className="w-1/4 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-      <img src="https://api.lorem.space/image/face?hash=3174" />
+    <div className="rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+      <img style={{height:"100px",width:"100px"}} src={user.photoURL?user.photoURL:profilePic} />
     </div>
   </div>
   </div>
@@ -78,15 +79,15 @@ const MyProfile = () => {
       <FaUserEdit onClick={()=>setIsEdit(!isEdit)} className='h-10 w-10'></FaUserEdit>
     </div>
 
-    <div className='w-full max-w-xs lg:max-w-2xl flex'>
-      <span className='block bg-primary p-4 w-1/4 text-white text-center'>NAME:</span>
-      <span className='block bg-base-200 p-4 w-full'>{user && user?.displayName}</span>
+    <div className='w-full max-w-xs lg:max-w-2xl flex flex-col lg:flex-row'>
+      <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>NAME</span>
+      <span className='block bg-base-200 p-4 w-full lg:w-3/4'>{user && user?.displayName}</span>
     </div>
-    <div className='w-full max-w-xs lg:max-w-2xl flex'>
-      <span className='block bg-primary p-4 w-1/4 text-white text-center'>EMAIL:</span>
-      <span className='block bg-base-200 p-4 w-full'>{user && (user?.email||user?.user?.email)}</span>
+    <div className='w-full max-w-xs lg:max-w-2xl flex flex-col lg:flex-row'>
+      <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EMAIL</span>
+      <span className='block bg-base-200 p-4 w-full  lg:w-3/4'>{user && (user?.email||user?.user?.email)}</span>
     </div>
-    <form onSubmit={update} className='w-full max-w-xs lg:max-w-2xl'>
+    <form onSubmit={update} className='w-full mb-5 max-w-xs lg:max-w-2xl'>
     <div className=" form-control w-full max-w-xs lg:max-w-2xl">
       <label className="label">
         <span className="label-text font-bold text-primary">Address</span>

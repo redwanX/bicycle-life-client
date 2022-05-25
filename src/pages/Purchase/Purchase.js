@@ -7,6 +7,7 @@ import { Navigate, useLocation, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import PurchaseCard from './PurchaseCard';
 
 const Purchase = () => {
   const [user,loading] = useAuthState(auth);
@@ -39,6 +40,9 @@ const Purchase = () => {
     const email= user.email;
     const address= event.target.address.value;
     const phone= event.target.phone.value;
+    
+    event.target.address.value="";
+    event.target.phone.value="";
     const item = part;
     const authToken = localStorage.getItem('authToken');
     const body = {
@@ -62,18 +66,7 @@ const Purchase = () => {
     <div className='my-12 container mx-auto'>
     <div className='text-4xl pb-5 font-bold text-primary text-center '>PURCHASE</div>
     <hr />
-    <div className="card py-5 lg:card-side bg-base-100 shadow-xl">
-        <figure><img src={image} alt="" className="w-1/2" /></figure>
-        <div className="card-body mb-10">
-            <div className="lg:flex block justify-between w-100">
-            <h2 className="text-primary text-xl lg:text-2xl text-center font-bold">{name}</h2>
-            <h2 className="text-primary text-xl lg:text-2xl text-center font-bold ">${price}</h2>
-            </div>
-            <p className="text-md text-secondary font-semibold"><span className="text-primary">Minimum Order: </span>{moq}</p>
-            <p className="text-md text-secondary font-semibold"><span className="text-primary">Available Quantity: </span>{quantity}</p>
-            <p className="text-secondary text-md font-semibold text-justify">{desc}</p>
-            </div>
-        </div>
+      <PurchaseCard part={part}></PurchaseCard>
         <span className='block text-xl mt-12 font-bold text-secondary text-center '>Fill This Form To Continue</span>
         <hr />
         <div className='my-12 flex flex-col justify-center items-center'>

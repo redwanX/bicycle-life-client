@@ -10,11 +10,13 @@ const Header = () => {
     const location =useLocation();
     const logOut=()=>{
         localStorage.removeItem('authToken')
+        sessionStorage.removeItem('name')
         signOut(auth);
     }
     const menuItems = <>
     {user?
-     <div className='my-auto font-bold text-primary'><span className='font-bold'>Hello {user.displayName || user?.user?.displayName || "USER"}!</span></div>
+     <div className='my-auto font-bold text-primary'><span className='font-bold'>Hello {user.displayName || user?.user?.displayName || 
+        sessionStorage.getItem("name")}!</span></div>
     :""}
     <li className='font-bold'><Link to="/">Home</Link></li>
     <li className='font-bold'><Link to="/blog">Blog</Link></li>

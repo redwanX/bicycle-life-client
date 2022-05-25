@@ -2,41 +2,34 @@ import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import { Navigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading';
+import DeleteModal from './DeleteModal';
 import Order from './Order';
 const MyOrder = () => {
-  const [user,loading] = useAuthState(auth);
-    const [orders ,setOrder] = useState([]);
-    const [orderLoading,setOrderloading] = useState(false);
-    const location = useLocation();
-    useEffect(()=>{
-      const authToken =localStorage.getItem('authToken');
-      if(user){
-            setOrderloading(true);
-            const email = user?.user?.email || user?.email;
-              axios.get(`http://localhost:5000/order?email=${email}`,{
-              headers:{authorization: `Bearer ${authToken}`}
-            })
-            .then(res=>{
-                setOrder(res.data);
-                setOrderloading(false);
-            })
-            .catch(err=>{
-              if(err.response.status ===401 || err.response.status ===403){
-                toast("YOU ARE NOT AUTHORIZED!");
-                signOut(auth)
-                return <Navigate to="/login" state={{ from: location }} replace />
-              }
-            })
-           }
-        
+   const [user,loading] = useAuthState(auth);
+   const location = useLocation();
+   const [deleteOrder,setDeleteOrder] = useState('');
+    const { data: orders, isLoading, refetch } = useQuery(['orders',user], () => axios.get(`http://localhost:5000/order?email=${user?.user?.email || user?.email}`,{
+      headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
+    })
+    .then(res=>{
+        return res.data
+    })
+    .catch(err=>{
+      if(err.response.status ===401 || err.response.status ===403){
+        toast("YOU ARE NOT AUTHORIZED!");
+        signOut(auth)
+        return <Navigate to="/login" state={{ from: location }} replace />
+      }
+    }));
+    
            
-        },
-    [user])
-    if(loading || orderLoading){
+      
+    if(loading || isLoading){
       return <Loading></Loading>
   }
 
@@ -59,11 +52,14 @@ const MyOrder = () => {
       </tr>
     </thead> 
     <tbody>
-        {orders.map((order,i)=><Order key={order._id} index={i} item={order}></Order>)}
+        {Array.isArray(orders) && orders.map((order,i)=><Order setDeleteOrder={setDeleteOrder} key={order._id} index={i} item={order}></Order>)}
     </tbody>
   </table>
+  {
+    deleteOrder && <DeleteModal deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} refetch={refetch}>
+    </DeleteModal>
+  }
 </div>
-
     </div>
   )
 }

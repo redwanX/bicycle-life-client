@@ -4,7 +4,8 @@ import { MdDoneAll  } from "react-icons/md";
 
 const Order = (props) => {
     const {image,name,price} = props.item.item;
-    const {qty,status} = props.item;
+    const {_id,qty,status} = props.item;
+    const {setDeleteOrder }= props
     return (
     <tr>
     <th>{props.index+1}</th>
@@ -14,7 +15,7 @@ const Order = (props) => {
     <td>{price}$</td>
     <td>{parseInt(price) * parseInt(qty)}$</td>
     <td>{status==="unpaid"?"unpaid":"39435835jc"}</td>
-    <td>{status ==="unpaid"? <><button className='btn btn-primary border-0 w-full'>Pay</button><button className='btn btn-primary border-0 w-full'>Pay</button></>:<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>PAID</button>}</td>
+    <td>{status ==="unpaid"? <div className='flex flex-col'><button className='btn btn-sm bg-primary border-0 mb-1'>Pay</button><label onClick={() => setDeleteOrder(_id)} htmlFor="delete-modal" className='btn btn-sm btn-error border-0 mb-1'>Delete</label></div>:<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>PAID</button>}</td>
     
   </tr>
   )

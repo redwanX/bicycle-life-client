@@ -22,7 +22,7 @@ const Summary = () => {
                 <div className="text-primary text-8xl">
                 <FaMoneyCheckAlt></FaMoneyCheckAlt>
                 </div>
-                <div className='stat-desc font-bold'>We Made</div>
+                <div className='stat-desc font-bold'>We Mae</div>
                 <div className="stat-value text-primary">16M+</div>
                 <div className="stat-title text-xl font-bold">Annual revenue</div>
             </div>
