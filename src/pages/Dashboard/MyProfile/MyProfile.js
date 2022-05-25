@@ -41,6 +41,7 @@ const MyProfile = () => {
   }
   const update=(event)=>{
     event.preventDefault()
+    setIsEdit(!isEdit)
     const name= user.name;
     const email= user?.email || user?.user?.email;
     const authToken = localStorage.getItem('authToken');
