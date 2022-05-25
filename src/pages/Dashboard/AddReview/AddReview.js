@@ -74,7 +74,7 @@ const AddReview = () => {
             </label>
             <textarea  className="textarea textarea-bordered" name="desc" required placeholder="Description"></textarea>
           </div>
-          <button className='btn w-full mt-4' type="submit">Submit</button>
+          <button className='btn bg-secondary w-full mt-4' type="submit">Submit</button>
 
 
 

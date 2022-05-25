@@ -3,7 +3,7 @@ import React from 'react'
 const PurchaseCard = (props) => {
   const {image,name,price,desc,moq,quantity} = props.part;
   return (
- <div className="card py-5 lg:card-side bg-base-200 shadow-xl">
+ <div className="card py-5 lg:card-side bg-accent shadow-xl">
     <figure><img src={image} alt="" className="w-1/2" /></figure>
     <div className="card-body p-5 mb-10">
         <div className="lg:flex block justify-between w-100">

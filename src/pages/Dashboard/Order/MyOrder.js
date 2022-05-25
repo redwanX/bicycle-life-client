@@ -52,7 +52,7 @@ const MyOrder = () => {
       </tr>
     </thead> 
     <tbody>
-        {Array.isArray(orders) && orders.map((order,i)=><Order setDeleteOrder={setDeleteOrder} key={order._id} index={i} item={order}></Order>)}
+        {Array.isArray(orders) && [...orders].reverse().map((order,i)=><Order setDeleteOrder={setDeleteOrder} key={order._id} index={i} item={order}></Order>)}
     </tbody>
   </table>
   {

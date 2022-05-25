@@ -11,10 +11,12 @@ const Reviews = () => {
     }
     return (
     <div>
-          <div className='mt-12 container mx-auto'>
-         <div className=' text-4xl pb-5 font-bold text-primary text-center '>SUMMARY</div>
+          <div className='my-12 container mx-auto'>
+         <div className=' text-4xl pb-5 font-bold text-primary text-center '>REVIEWS</div>
             <hr /> 
-        {reviews && reviews.map(review =><Review review={review}></Review>)}
+        <div className='grid mt-12 grid-cols-1 lg:grid-cols-3 gap-4'>
+        {reviews && [...reviews].reverse().map(review =><Review key={review._id} review={review}></Review>)}
+        </div>
     </div>
     </div>
   )

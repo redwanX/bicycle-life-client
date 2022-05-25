@@ -4,7 +4,7 @@ import { RiVisaFill,RiMastercardFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-primary text-primary-content">
+    <footer className="footer footer-center p-10 bg-secondary text-accent">
     <div>
         <BsBicycle className='text-8xl'></BsBicycle>
       <p className="font-bold">

@@ -13,6 +13,7 @@ import Purchase from './pages/Purchase/Purchase';
 import MyOrder from './pages/Dashboard/Order/MyOrder';
 import AddReview from './pages/Dashboard/AddReview/AddReview';
 import MyProfile from './pages/Dashboard/MyProfile/MyProfile';
+import Payment from './pages/Payment/Payment';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path='review' element={<AddReview></AddReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
       </Routes>

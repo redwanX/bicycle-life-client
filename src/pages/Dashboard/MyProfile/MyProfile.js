@@ -117,7 +117,7 @@ const MyProfile = () => {
     {
       isEdit?
         "":
-        <button className='btn w-full mt-4' type="submit">Submit</button>
+        <button className='btn bg-secondary w-full mt-4' type="submit">Submit</button>
         
     }
 

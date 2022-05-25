@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { Navigate, useLocation, useParams } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -14,6 +14,7 @@ const Purchase = () => {
   const {id} = useParams();
   const [qty,setQuantity] = useState(-100)
   const location = useLocation()
+  const navigate = useNavigate()
   const { data: part, isLoading } = useQuery(['singlepart'], () => fetch(`http://localhost:5000/part/${id}`)
   .then(res => res.json()))
   useEffect(()=>{
@@ -31,7 +32,6 @@ const Purchase = () => {
  
   const updateQuantity = event =>{
     const number =parseInt(event.target.value)|| 0;
-    console.log(number)
     setQuantity(number);
   }
   const order = (event) =>{
@@ -52,6 +52,7 @@ const Purchase = () => {
       })
       .then(res=>{
         toast('order placed!');
+        navigate('/dashboard');
       })
       .catch(err=>{
         if(err.response.status ===401 || err.response.status ===403){
@@ -123,7 +124,7 @@ const Purchase = () => {
           <input type="text" value={(parseInt(price) * qty).toString()+'$'} readOnly disabled className="input input-bordered w-full max-w-xs lg:max-w-2xl" />
         </div>
           }
-          <button className='btn btn-md mt-4' type="submit"  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
+          <button className='btn btn-md bg-secondary mt-4' type="submit"  disabled={qty<parseInt(moq)||qty>parseInt(quantity)}>Purchase</button>
 
           </form>
         </div>
