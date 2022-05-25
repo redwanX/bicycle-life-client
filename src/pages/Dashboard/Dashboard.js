@@ -33,6 +33,7 @@ const Dashboard = () => {
         <Link className='btn bg-secondary border-0 mb-2' to='/dashboard/makeAdmin'>Make Admin</Link>
         <Link className='btn bg-secondary border-0 mb-2' to='/dashboard/addProduct'>Add Product</Link>
         <Link className='btn bg-secondary border-0 mb-2' to='/dashboard/manageProducts'>Manage Products</Link>
+        <Link className='btn bg-secondary border-0 mb-2' to='/dashboard/manageOrders'>Manage Orders</Link>
         </>
 
       }

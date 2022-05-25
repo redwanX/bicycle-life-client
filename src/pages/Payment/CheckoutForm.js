@@ -70,9 +70,10 @@ const CheckoutForm = ({ordersById}) => {
         setTransId(paymentIntent.id);
         const authToken = localStorage.getItem('authToken');
         const payment_id=paymentIntent.id;
-        const body = {...ordersById,payment_id} 
-        
-        axios.put(`http://localhost:5000/updateOrder/${body._id}`,body,{
+        const email =ordersById?.email
+        let body = {email,status:"paid",payment_id} 
+        console.log(body);
+        axios.put(`http://localhost:5000/updateOrder/${ordersById._id}`,body,{
             headers:{authorization: `Bearer ${authToken}`}
           })
           .then(res=>{

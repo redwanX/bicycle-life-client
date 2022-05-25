@@ -29,9 +29,8 @@ const Login = () => {
       const email = userAuthenticate.email;
       const currentUser ={email}
       const {data}= await axios.put(`http://localhost:5000/login/${email}`,currentUser);
-      
-      setLoadToken(false);
       localStorage.setItem('authToken',data.token)
+      setLoadToken(false);
       navigate(from,{replace:true});
     }
   }

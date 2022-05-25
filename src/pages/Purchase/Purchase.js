@@ -37,7 +37,7 @@ const Purchase = () => {
   const order = (event) =>{
     event.preventDefault()
     const name= user.displayName;
-    const email= user.email;
+    const email= user?.email || user?.user?.email;
     const address= event.target.address.value;
     const phone= event.target.phone.value;
     
