@@ -15,7 +15,7 @@ const ManageOrders = () => {
    const location = useLocation();
    const [changeOrder,setChangeOrder] = useState('');
    const [deleteOrder,setDeleteOrder] = useState('');
-    const { data: allOrders, isLoading, refetch } = useQuery(['allOrders',user], () => axios.get(`http://localhost:5000/allorder`,{
+    const { data: allOrders, isLoading, refetch } = useQuery(['allOrders',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/allorder`,{
       headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
     })
     .then(res=>{

@@ -26,7 +26,7 @@ const Quotation = () => {
     const requirement = e.target.requirement.value;
     const body ={email,parts,quantity,requirement}
     console.log(body);
-    axios.post('http://localhost:5000/quote',body)
+    axios.post('https://serene-meadow-57507.herokuapp.com/quote',body)
     .then(res=>{
         if(res.data.insertedId){
         toast("QUOTATION SENT!")

@@ -11,7 +11,7 @@ import Items from './Items';
 const ManageProducts = () => {
     const [user,loading] = useAuthState(auth);
     const [deleteItem,setDeleteItem] = useState('');
-     const { data: items, isLoading, refetch } = useQuery(['items',user], () => axios.get(`http://localhost:5000/allparts`)
+     const { data: items, isLoading, refetch } = useQuery(['items',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/allparts`)
      .then(res=>{
          return res.data
      })

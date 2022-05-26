@@ -33,7 +33,7 @@ const AddReview = () => {
     const authToken = localStorage.getItem('authToken');
     const body = {
       name,email,ratings,desc}
-      axios.post(`http://localhost:5000/review`,body,{
+      axios.post(`https://serene-meadow-57507.herokuapp.com/review`,body,{
         headers:{authorization: `Bearer ${authToken}`}
       })
       .then(res=>{

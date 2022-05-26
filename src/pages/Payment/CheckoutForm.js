@@ -17,7 +17,7 @@ const CheckoutForm = ({ordersById}) => {
       if(ordersById){
         const price = parseInt(ordersById.qty)*parseInt(ordersById.item.price);
         setProcessing(true);
-        axios.post('http://localhost:5000/create-payment-intent',{price},{
+        axios.post('https://serene-meadow-57507.herokuapp.com/create-payment-intent',{price},{
             headers:{
               authorization: `Bearer ${localStorage.getItem('authToken')}`}}
           )
@@ -73,7 +73,7 @@ const CheckoutForm = ({ordersById}) => {
         const email =ordersById?.email
         let body = {email,status:"paid",payment_id} 
         console.log(body);
-        axios.put(`http://localhost:5000/updateOrder/${ordersById._id}`,body,{
+        axios.put(`https://serene-meadow-57507.herokuapp.com/updateOrder/${ordersById._id}`,body,{
             headers:{authorization: `Bearer ${authToken}`}
           })
           .then(res=>{

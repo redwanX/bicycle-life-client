@@ -18,7 +18,7 @@ const ChangeOrderModal = (props) => {
             email:user.email || user?.email?.email,
             status:"approved"
         }
-        axios.put(`http://localhost:5000/updateOrder/${changeOrder._id}`,body,{
+        axios.put(`https://serene-meadow-57507.herokuapp.com/updateOrder/${changeOrder._id}`,body,{
             headers:{authorization: `Bearer ${authToken}`}
           })
           .then(res=>{

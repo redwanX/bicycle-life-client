@@ -12,7 +12,7 @@ import User from './User';
 const MakeAdmin = () => {
     const [toAdmin,setToAdmin] = useState('');
     const location = useLocation();
-     const { data: users, isLoading, refetch } = useQuery('users', () => axios.get(`http://localhost:5000/users`,{
+     const { data: users, isLoading, refetch } = useQuery('users', () => axios.get(`https://serene-meadow-57507.herokuapp.com/users`,{
        headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
      })
      .then(res=>{

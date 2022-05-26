@@ -13,7 +13,7 @@ const MyOrder = () => {
    const [user,loading] = useAuthState(auth);
    const location = useLocation();
    const [deleteOrder,setDeleteOrder] = useState('');
-    const { data: orders, isLoading, refetch } = useQuery(['orders',user], () => axios.get(`http://localhost:5000/order?email=${user?.user?.email || user?.email}`,{
+    const { data: orders, isLoading, refetch } = useQuery(['orders',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/order?email=${user?.user?.email || user?.email}`,{
       headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
     })
     .then(res=>{

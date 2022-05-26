@@ -15,7 +15,7 @@ const Purchase = () => {
   const [qty,setQuantity] = useState(-100)
   const location = useLocation()
   const navigate = useNavigate()
-  const { data: part, isLoading } = useQuery(['singlepart'], () => fetch(`http://localhost:5000/part/${id}`)
+  const { data: part, isLoading } = useQuery(['singlepart'], () => fetch(`https://serene-meadow-57507.herokuapp.com/part/${id}`)
   .then(res => res.json()))
   useEffect(()=>{
     if(part){
@@ -47,7 +47,7 @@ const Purchase = () => {
     const authToken = localStorage.getItem('authToken');
     const body = {
       name,email,address,phone,qty,item}
-      axios.post(`http://localhost:5000/order`,body,{
+      axios.post(`https://serene-meadow-57507.herokuapp.com/order`,body,{
         headers:{authorization: `Bearer ${authToken}`}
       })
       .then(res=>{

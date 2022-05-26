@@ -27,7 +27,7 @@ const onSubmit= async(data)=>{
                 quantity:parseInt(data.quantity),
                 image:result.data.url
             }
-            axios.post(`http://localhost:5000/addProduct`,body,{
+            axios.post(`https://serene-meadow-57507.herokuapp.com/addProduct`,body,{
                 headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
             }).then(res=>{
                 console.log(res.data);

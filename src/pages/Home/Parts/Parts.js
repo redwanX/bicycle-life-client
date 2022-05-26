@@ -9,7 +9,7 @@ import Part from './Part'
 const Parts = () => {
   const [user,loading] =useAuthState(auth);
   const [admin,adminLoading] =useAdmin(user);
-  const { data: parts, isLoading } = useQuery(['parts',user], () => fetch(`http://localhost:5000/allparts`)
+  const { data: parts, isLoading } = useQuery(['parts',user], () => fetch(`https://serene-meadow-57507.herokuapp.com/allparts`)
   .then(res => res.json()))
   
   if(isLoading ||loading || adminLoading){

@@ -13,7 +13,7 @@ const ConfirmAdminModal = (props) => {
     const confirmAdmin = () => {
         isAdminLoading(true);
         const authToken = localStorage.getItem('authToken');
-        axios.put(`http://localhost:5000/user/admin/${toAdmin}`,{toAdmin},{
+        axios.put(`https://serene-meadow-57507.herokuapp.com/user/admin/${toAdmin}`,{toAdmin},{
         headers:{authorization: `Bearer ${authToken}`}
       })
       .then(res=>{

@@ -16,7 +16,7 @@ const Payment = () => {
     const [user,loading] = useAuthState(auth)
     const {id} = useParams();
     const location = useLocation();
-    const { data: ordersById, isLoading, refetch } = useQuery(['ordersById',user,id], () => axios.get(`http://localhost:5000/orderById/${id}`,{
+    const { data: ordersById, isLoading, refetch } = useQuery(['ordersById',user,id], () => axios.get(`https://serene-meadow-57507.herokuapp.com/orderById/${id}`,{
         headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
       })
       .then(res=>{

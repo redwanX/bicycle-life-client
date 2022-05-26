@@ -13,7 +13,7 @@ const DeleteModal = (props) => {
     const handleDelete = () => {
         isDeleteLoading(true);
         const authToken = localStorage.getItem('authToken');
-        axios.delete(`http://localhost:5000/order/${deleteOrder}`,{
+        axios.delete(`https://serene-meadow-57507.herokuapp.com/order/${deleteOrder}`,{
         headers:{authorization: `Bearer ${authToken}`}
       })
       .then(res=>{
