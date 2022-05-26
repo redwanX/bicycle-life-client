@@ -15,7 +15,7 @@ const CheckoutForm = ({ordersById}) => {
     const location =useLocation();
     useEffect(() => {
       if(ordersById){
-        const price = parseInt(ordersById.qty)*parseInt(ordersById.item.price);
+        const price = parseInt(ordersById?.qty)*parseInt(ordersById?.item?.price);
         setProcessing(true);
         axios.post('https://serene-meadow-57507.herokuapp.com/create-payment-intent',{price},{
             headers:{
@@ -26,9 +26,15 @@ const CheckoutForm = ({ordersById}) => {
                     setClientSecret(data.data.clientSecret);
                 }
                 setProcessing(false);
+            })
+            .catch(err=>{
+              setProcessing(false);
+              signOut(auth)
+              return <Navigate to="/login" state={{ from: location }} replace />
             });
       }
     }, [ordersById])
+
     const handleSubmit = async (event) => {
         event.preventDefault();    
         if (!stripe || !elements) {
@@ -47,46 +53,49 @@ const CheckoutForm = ({ordersById}) => {
           toast( error?.message);
           setProcessing(false);
         }
+        else{
+          const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: ordersById?.name,
+                        email: ordersById?.email
+                    },
+                },
+            },
+          );
         
-        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-          clientSecret,
-          {
-              payment_method: {
-                  card: card,
-                  billing_details: {
-                      name: ordersById?.name,
-                      email: ordersById?.email
-                  },
-              },
-          },
-        );
-      
-      if (intentError) {
-          toast(intentError?.message);
+        if (intentError) {
+            toast(intentError?.message);
+            setProcessing(false);
+          }
+        else{
+          setSuccess(true);
+          setTransId(paymentIntent.id);
+          const authToken = localStorage.getItem('authToken');
+          const payment_id=paymentIntent.id;
+          const email =ordersById?.email
+          let body = {email,status:"paid",payment_id} 
+          axios.put(`https://serene-meadow-57507.herokuapp.com/updateOrder/${ordersById._id}`,body,{
+              headers:{authorization: `Bearer ${authToken}`}
+            })
+            .then(res=>{
+              toast('PAYMENT SUCCESSFULL!');
+              setProcessing(false);
+            })
+            .catch(err=>{
+              if(err.response.status ===401 || err.response.status ===403){
+                toast("YOU ARE NOT AUTHORIZED!");
+                setProcessing(false);
+                signOut(auth)
+                return <Navigate to="/login" state={{ from: location }} replace />
+              }
+            })
           setProcessing(false);
         }
-      else{
-        setSuccess(true);
-        setTransId(paymentIntent.id);
-        const authToken = localStorage.getItem('authToken');
-        const payment_id=paymentIntent.id;
-        const email =ordersById?.email
-        let body = {email,status:"paid",payment_id} 
-        console.log(body);
-        axios.put(`https://serene-meadow-57507.herokuapp.com/updateOrder/${ordersById._id}`,body,{
-            headers:{authorization: `Bearer ${authToken}`}
-          })
-          .then(res=>{
-            toast('PAYMENT SUCCESSFULL!');
-          })
-          .catch(err=>{
-            if(err.response.status ===401 || err.response.status ===403){
-              toast("YOU ARE NOT AUTHORIZED!");
-              signOut(auth)
-              return <Navigate to="/login" state={{ from: location }} replace />
-            }
-          })
-        setProcessing(false);
+        
       }
       };
   return (

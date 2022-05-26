@@ -16,7 +16,7 @@ const ConfirmAdminModal = (props) => {
         headers:{authorization: `Bearer ${authToken}`}
       })
       .then(res=>{
-            console.log(res);
+           
             toast("ADMIN CREATED")
             refetch()
             isAdminLoading(false);

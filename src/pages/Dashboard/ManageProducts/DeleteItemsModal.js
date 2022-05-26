@@ -10,7 +10,7 @@ const DeleteItemsModal = (props) => {
     const location = useLocation();
     const {deleteItem,setDeleteItem,refetch,isDeleteLoading}=props
     const handleDelete = () => {
-        console.log(deleteItem);
+        
         isDeleteLoading(true);
         const authToken = localStorage.getItem('authToken');
         axios.delete(`https://serene-meadow-57507.herokuapp.com/deleteItem/${deleteItem}`,{
