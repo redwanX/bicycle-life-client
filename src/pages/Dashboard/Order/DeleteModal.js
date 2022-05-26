@@ -38,10 +38,10 @@ return (
   <input type="checkbox" id="delete-modal" className="modal-toggle" />
  <div className="modal p-5 modal-bottom sm:modal-middle">
      <div className="modal-box bg-accent">
-         <h3 className="font-bold text-lg text-center text-red-500">Are you sure you want to delete This Order!</h3>
+         <h3 className="font-bold text-lg text-center text-red-500">Are you sure you want to Cancel This Order!</h3>
          <div className="modal-action items-center">
-         <button className="btn btn-sm btn-error" onClick={handleDelete}>Delete</button>
-             <label htmlFor="delete-modal" className="btn btn-sm">Cancel</label>
+         <button className="btn btn-sm btn-error" onClick={handleDelete}>Yes</button>
+             <label htmlFor="delete-modal" className="btn btn-sm">No</label>
          </div>
      </div>
  </div>

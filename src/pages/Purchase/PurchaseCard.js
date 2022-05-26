@@ -4,7 +4,7 @@ const PurchaseCard = (props) => {
   const {image,name,price,desc,moq,quantity} = props.part;
   return (
  <div className="card p-5 flex flex-col lg:flex-row bg-accent shadow-xl">
-    <img src={image} alt="" style={{height:"300px"}} className="max-w-xs w-full" /> 
+    <img src={image} alt="" style={{height:"300px"}} className="mx-auto max-w-xs w-full" /> 
     
     <div className="card-body p-5 mb-10">
         <div className="lg:flex block justify-between w-100">

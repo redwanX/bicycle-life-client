@@ -113,7 +113,7 @@ const CheckoutForm = ({ordersById}) => {
     <h1>
     {processing?<button disabled className="btn loading w-full">Loading</button>:""}</h1>
     <h1>
-    {transId ? <div  className="btn hover:bg-accent w-full text-primary bg-accent">Transaction ID  : <span className='text-secondary'>{transId}</span></div>:""}
+    {transId ? <div  className="btn lg:border-2 border-0 hover:bg-accent w-full text-primary bg-accent">Transaction ID  : <span className='text-secondary'>{transId}</span></div>:""}
     </h1>
   </form>
 
