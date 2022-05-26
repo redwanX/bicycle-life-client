@@ -2,7 +2,7 @@ import React from 'react'
 
 const Blogs = () => {
   return (
-    <div className='container mx-auto'>
+    <div style={{minHeight: 'calc(100vh - 64px - 100px)'}} className='container mx-auto'>
          <div className=' text-4xl pb-5 font-bold text-primary text-center '>BLOGS</div>
             <hr /> 
             <div className="card w-full bg-base-100 ">

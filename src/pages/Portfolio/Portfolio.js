@@ -9,7 +9,7 @@ const Portfolio = () => {
     window.scrollTo(0, 0)
   }, [])
   return (
-    <div className='container mx-auto'> 
+    <div style={{minHeight: 'calc(100vh - 64px - 100px)'}} className='container mx-auto'> 
     <div className='text-2xl py-5 font-bold text-secondary text-center '>MY PORTFOLIO</div>
       <hr />
   <div className='w-full bg-primary' style={{height:"20vh"}}>
