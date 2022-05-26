@@ -17,7 +17,10 @@ const MyProfile = () => {
   useEffect(()=>{
     if(user){
       setloadFetch(true)
-    axios.get(`https://serene-meadow-57507.herokuapp.com/profile/${user?.email||user?.user?.email}`)
+    const authToken = localStorage.getItem('authToken');
+    axios.get(`https://serene-meadow-57507.herokuapp.com/profile/${user?.email||user?.user?.email}`,{
+      headers:{authorization: `Bearer ${authToken}`}
+    })
     .then(data=>{
       setProfile(data.data)
       setloadFetch(false);
