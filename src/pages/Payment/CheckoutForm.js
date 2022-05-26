@@ -84,7 +84,7 @@ const CheckoutForm = ({ordersById}) => {
             .then(res=>{
               console.log(res);
               toast.success('PAYMENT SUCCESSFULL');
-              toast.success('YOU CAN ALWAYS GET YOUR PAYMENT_ID ON ORDER PAGE!');
+              toast.success('YOU CAN ALWAYS GET YOUR TRANSACTION_ID ON ORDER PAGE!');
               setProcessing(false);
             })
             .catch(err=>{
