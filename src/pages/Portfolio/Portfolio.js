@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import profilePic from '../../Images/Profile/myPro.jpg'
 import project1 from '../../Images/portfolio/S-1.png'
 import project2 from '../../Images/portfolio/S-2.png'
 import project3 from '../../Images/portfolio/S-3.png'
 const Portfolio = () => {
-  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className='container mx-auto'> 
     <div className='text-2xl py-5 font-bold text-secondary text-center '>PORTFOLIO</div>

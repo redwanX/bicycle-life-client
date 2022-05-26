@@ -14,6 +14,12 @@ const useAdmin =(user)=> {
                 setAdmin(data?.data?.admin);
                 setisAdminLoading(false);
             })
+            .catch(err=>{
+                setisAdminLoading(false)
+            })
+        }
+        else{
+            setisAdminLoading(false);
         }
     }, [user])
 

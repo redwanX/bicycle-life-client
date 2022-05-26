@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link, Outlet } from 'react-router-dom'
 import auth from '../../firebase.init'
@@ -8,6 +8,9 @@ import Loading from '../Shared/Loading'
 const Dashboard = () => {
   const [user,loading] = useAuthState(auth)
   const [admin,adminLoading] = useAdmin(user)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   if(loading||adminLoading){
     return <Loading></Loading>
   }
