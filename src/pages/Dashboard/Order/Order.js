@@ -17,7 +17,7 @@ const Order = (props) => {
     <td>{price}$</td>
     <td>{parseInt(price) * parseInt(qty)}$</td>
     <td>{status==="unpaid"?"N/A":trans_Id}</td>
-    <td>{status ==="unpaid"? <div className='flex flex-col'><button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className='btn btn-sm bg-primary border-0 mb-1'>Pay</button><label onClick={() => setDeleteOrder(_id)} htmlFor="delete-modal" className='btn btn-sm btn-error border-0 mb-1'>Cancel</label></div>:<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>PAID</button>}</td>
+    <td>{status ==="unpaid"? <div className='flex flex-col'><button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className='btn btn-sm bg-primary border-0 mb-1'>Pay</button><label onClick={() => setDeleteOrder(_id)} htmlFor="delete-modal" className='btn btn-sm btn-error border-0 mb-1'>Cancel</label></div>:status==="approved"?<button  className='font-bold text-lime-600 border-0 w-full'><MdDoneAll className='inline text-2xl'></MdDoneAll>SHIPPED</button>:<button  className='font-bold text-primary border-0 w-full'>PENDING</button>}</td>
     
   </tr>
   )

@@ -49,7 +49,7 @@ const MyOrder = () => {
         <th>Price/Unit</th> 
         <th>Total Price</th> 
         <th>Transaction ID</th> 
-        <th>Action</th>
+        <th>Status</th>
       </tr>
     </thead> 
     <tbody>
