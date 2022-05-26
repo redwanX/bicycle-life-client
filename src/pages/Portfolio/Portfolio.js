@@ -39,22 +39,22 @@ const Portfolio = () => {
         <div className='flex flex-col' >
         <div className='flex p-5 justify-center' >
             <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>JAVASCRIPT</span>
-            <progress class=" p-0 m-0 w-2/4 progress progress-info " value="80" max="100"></progress>
+            <progress className=" p-0 m-0 w-2/4 progress progress-info " value="80" max="100"></progress>
         </div>
         
         <div className='flex p-5 justify-center' >
             <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>REACT JS</span>
-            <progress class=" p-0 m-0 w-2/4 progress progress-info " value="70" max="100"></progress>
+            <progress className=" p-0 m-0 w-2/4 progress progress-info " value="70" max="100"></progress>
         </div>
         
         <div className='flex p-5 justify-center' >
             <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>NODE JS</span>
-            <progress class=" p-0 m-0 w-2/4 progress progress-info " value="60" max="100"></progress>
+            <progress className=" p-0 m-0 w-2/4 progress progress-info " value="60" max="100"></progress>
         </div>
         
         <div className='flex p-5 justify-center' >
             <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>HTML/CSS</span>
-            <progress class=" p-0 m-0 w-2/4 progress progress-info " value="90" max="100"></progress>
+            <progress className=" p-0 m-0 w-2/4 progress progress-info " value="90" max="100"></progress>
         </div>
         </div>
     </div>
@@ -64,53 +64,53 @@ const Portfolio = () => {
     <div className='w-full mt-5 bg-accent max-w-xs lg:max-w-6xl'>
         <div className='block bg-primary p-4 w-fulltext-white text-center font-bold text-accent'>PROJECTS</div>
         <div className='grid grid-cols-1 gap-2 mt-5 lg:grid-cols-3'>
-        <div class="card w-full bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow-xl">
         <figure><img src={project1} alt="" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">
+            <div className="card-body">
+                <h2 className="card-title">
                 BEATS REVIEW
                 </h2>
                 <p>This is a product review website</p>
-                <div class="card-actions justify-end">
-                <div class="badge badge-outline">REACT JS</div> 
-                <div class="badge badge-outline">TAILWIND</div>
+                <div className="card-actions justify-end">
+                <div className="badge badge-outline">REACT JS</div> 
+                <div className="badge badge-outline">TAILWIND</div>
                 </div>
-                <div class="card-actions justify-end">
-                <a href="https://beats-solo-3.netlify.app/"  target="_blank"  class="btn btn-xs bg-primary w-full border-0">Live Website</a>
+                <div className="card-actions justify-end">
+                <a href="https://beats-solo-3.netlify.app/"  target="_blank"  className="btn btn-xs bg-primary w-full border-0">Live Website</a>
                 </div>
             </div>
             </div>
 
-            <div class="card w-full bg-base-100 shadow-xl">
+            <div className="card w-full bg-base-100 shadow-xl">
         <figure><img src={project2} alt="" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">
+            <div className="card-body">
+                <h2 className="card-title">
                 TRAVEL GUIDE
                 </h2>
                 <p>This website is for a single tour guide</p>
-                <div class="card-actions justify-end">
-                <div class="badge badge-outline">REACT JS</div> 
-                <div class="badge badge-outline">FIREBASE</div>
+                <div className="card-actions justify-end">
+                <div className="badge badge-outline">REACT JS</div> 
+                <div className="badge badge-outline">FIREBASE</div>
                 </div>
-                <div class="card-actions justify-end">
-                <a href="https://travel-guide-dfd47.web.app/"  target="_blank"  class="btn btn-xs bg-primary w-full border-0">Live Website</a>
+                <div className="card-actions justify-end">
+                <a href="https://travel-guide-dfd47.web.app/"  target="_blank"  className="btn btn-xs bg-primary w-full border-0">Live Website</a>
                 </div>
             </div>
             </div>
 
 
-            <div class="card w-full bg-base-100 shadow-xl">
+            <div className="card w-full bg-base-100 shadow-xl">
         <figure><img src={project3} alt="" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">INVENTORY
+            <div className="card-body">
+                <h2 className="card-title">INVENTORY
                 </h2>
                 <p>This is Furniture a product Inventory</p>
-                <div class="card-actions justify-end">
-                <div class="badge badge-outline">REACT JS</div> 
-                <div class="badge badge-outline">NODE JS</div>
+                <div className="card-actions justify-end">
+                <div className="badge badge-outline">REACT JS</div> 
+                <div className="badge badge-outline">NODE JS</div>
                 </div>
-                <div class="card-actions justify-end">
-                <a href="https://furniture-house-d2811.web.app/"  target="_blank"  class="btn btn-xs bg-primary w-full border-0">Live Website</a>
+                <div className="card-actions justify-end">
+                <a href="https://furniture-house-d2811.web.app/"  target="_blank"  className="btn btn-xs bg-primary w-full border-0">Live Website</a>
 
                 </div>
             </div>

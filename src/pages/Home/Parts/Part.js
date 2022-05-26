@@ -7,7 +7,7 @@ const Part = ({part}) => {
   return (
 
     <div className="card rounded-2xl card-compact border-0 bg-base-100 w-full  lg:w-5/6 mx-auto relative shadow-xl">
-    <figure><img className="w-full" style={{height:'400px'}} src={image} alt="Shoes" /></figure>
+    <figure><img className="w-full h-[45vh]"  src={image} alt="Shoes" /></figure>
     <div className="card-body bg-accent mb-10">
       <div className="lg:flex block justify-between w-100">
       <h2 className="card-title text-primary text-xl flex justify-center font-bold">{name}</h2>

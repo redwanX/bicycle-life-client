@@ -20,6 +20,7 @@ import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
 import ManageProducts from './pages/Dashboard/ManageProducts/ManageProducts';
 import ManageOrders from './pages/Dashboard/ManageOrders/ManageOrders';
 import Portfolio from './pages/Portfolio/Portfolio';
+import PageNotFound from './pages/Shared/PageNotFound';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+        <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer></ToastContainer>
