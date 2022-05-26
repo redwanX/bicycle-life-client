@@ -13,6 +13,8 @@ import SingleOrder from './SingleOrder';
 const ManageOrders = () => {
    const [user,loading] = useAuthState(auth);
    const location = useLocation();
+   const [deleteLoading,isDeleteLoading] = useState(false);
+   const [changeLoading,isChangeLoading] = useState(false);
    const [changeOrder,setChangeOrder] = useState('');
    const [deleteOrder,setDeleteOrder] = useState('');
     const { data: allOrders, isLoading, refetch } = useQuery(['allOrders',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/allorder`,{
@@ -31,7 +33,7 @@ const ManageOrders = () => {
     
            
       
-    if(loading || isLoading){
+    if(loading || isLoading ||deleteLoading || changeLoading){
       return <Loading></Loading>
   }
 
@@ -54,16 +56,16 @@ const ManageOrders = () => {
       </tr>
     </thead> 
     <tbody>
-        {Array.isArray(allOrders) && [...allOrders].map((order,i)=><SingleOrder setDeleteOrder={setDeleteOrder} setChangeOrder={setChangeOrder} key={order._id} index={i} item={order}></SingleOrder>)}
+        {Array.isArray(allOrders) &&allOrders.map((order,i)=><SingleOrder setDeleteOrder={setDeleteOrder} setChangeOrder={setChangeOrder} key={order._id} index={i} item={order}></SingleOrder>)}
     </tbody>
   </table>
   {
-    user && changeOrder && <ChangeOrderModal user={user} changeOrder={changeOrder} setChangeOrder={setChangeOrder} refetch={refetch}>
+    user && changeOrder && <ChangeOrderModal isChangeLoading={isChangeLoading} user={user} changeOrder={changeOrder} setChangeOrder={setChangeOrder} refetch={refetch}>
     </ChangeOrderModal>
   }
   
   {
-    user && deleteOrder && <DeleteOrderModal user={user} deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} refetch={refetch}>
+    user && deleteOrder && <DeleteOrderModal isDeleteLoading={isDeleteLoading} user={user} deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} refetch={refetch}>
     </DeleteOrderModal>
   }
 </div>

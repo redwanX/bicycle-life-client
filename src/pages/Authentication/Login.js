@@ -9,12 +9,14 @@ import auth from '../../firebase.init';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import axios from 'axios';
 const Login = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit,getValues, watch, formState: { errors } } = useForm();
   const [userAuthenticate,loadingAuthenticate] = useAuthState(auth)
   const [email,setEmail] = useState('');
   const [loadToken,setLoadToken] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  
+
   const [
     signInWithEmailAndPassword,
     user,
@@ -50,9 +52,10 @@ const Login = () => {
     return <Loading></Loading>
   }
   const handleResetPassword = async ()=>{
-    const validateEmail = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(email);
-    if(email && validateEmail){
-      sendPasswordResetEmail(auth, email)
+    const currentEmail =getValues('email')
+    const validateEmail = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(currentEmail);
+    if(currentEmail && validateEmail){
+      sendPasswordResetEmail(auth, currentEmail)
       .then(() => {
         toast("Reset Link Sent To email")
       })

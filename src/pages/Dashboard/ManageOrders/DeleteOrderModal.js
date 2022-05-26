@@ -8,8 +8,7 @@ import Loading from '../../Shared/Loading'
 
 const DeleteOrderModal = (props) => {
     const location = useLocation();
-    const {deleteOrder,setDeleteOrder,refetch}=props
-    const [deleteLoading,isDeleteLoading] = useState(false);
+    const {deleteOrder,setDeleteOrder,refetch,isDeleteLoading}=props
     const handleDelete = () => {
         isDeleteLoading(true);
         const authToken = localStorage.getItem('authToken');
@@ -33,9 +32,6 @@ const DeleteOrderModal = (props) => {
         }
       })
     }  
- if(deleteLoading){
-  return <Loading></Loading>
- }
 return (
   <div>
   <input type="checkbox" id="delete-order-modal" className="modal-toggle" />

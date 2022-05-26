@@ -11,6 +11,7 @@ import User from './User';
 
 const MakeAdmin = () => {
     const [toAdmin,setToAdmin] = useState('');
+    const [adminLoading,isAdminLoading] = useState(false);
     const location = useLocation();
      const { data: users, isLoading, refetch } = useQuery('users', () => axios.get(`https://serene-meadow-57507.herokuapp.com/users`,{
        headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
@@ -26,7 +27,7 @@ const MakeAdmin = () => {
        }
      }));
      
-     if(isLoading){
+     if(isLoading || adminLoading){
        return <Loading></Loading>
    }
  
@@ -45,11 +46,11 @@ const MakeAdmin = () => {
        </tr>
      </thead> 
      <tbody>
-         {Array.isArray(users) && users.reverse().map((user,i)=><User setToAdmin={setToAdmin} key={user._id} index={i} user={user}></User>)}
+         {Array.isArray(users) && users.map((user,i)=><User setToAdmin={setToAdmin} key={user._id} index={i} user={user}></User>)}
      </tbody>
    </table>
    {
-     toAdmin && <ConfirmAdminModal toAdmin={toAdmin} setToAdmin={setToAdmin} refetch={refetch}>
+     toAdmin && <ConfirmAdminModal isAdminLoading={isAdminLoading} toAdmin={toAdmin} setToAdmin={setToAdmin} refetch={refetch}>
      </ConfirmAdminModal>
    }
  </div>

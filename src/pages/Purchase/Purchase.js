@@ -10,6 +10,9 @@ import Loading from '../Shared/Loading';
 import PurchaseCard from './PurchaseCard';
 
 const Purchase = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const [user,loading] = useAuthState(auth);
   const {id} = useParams();
   const [qty,setQuantity] = useState(-100)

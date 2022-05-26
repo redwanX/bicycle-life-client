@@ -11,6 +11,7 @@ import Items from './Items';
 const ManageProducts = () => {
     const [user,loading] = useAuthState(auth);
     const [deleteItem,setDeleteItem] = useState('');
+    const [deleteLoading,isDeleteLoading] = useState(false);
      const { data: items, isLoading, refetch } = useQuery(['items',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/allparts`)
      .then(res=>{
          return res.data
@@ -21,7 +22,7 @@ const ManageProducts = () => {
      
             
        
-     if(loading || isLoading){
+     if(loading || isLoading || deleteLoading){
        return <Loading></Loading>
    }
  
@@ -47,7 +48,7 @@ const ManageProducts = () => {
      </tbody>
    </table>
    {
-     deleteItem && <DeleteItemsModal deleteItem={deleteItem} setDeleteItem={setDeleteItem} refetch={refetch}>
+     deleteItem && <DeleteItemsModal isDeleteLoading={isDeleteLoading} deleteItem={deleteItem} setDeleteItem={setDeleteItem} refetch={refetch}>
      </DeleteItemsModal>
    }
  </div>

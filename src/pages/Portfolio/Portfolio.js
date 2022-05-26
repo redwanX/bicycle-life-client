@@ -10,7 +10,7 @@ const Portfolio = () => {
   }, [])
   return (
     <div className='container mx-auto'> 
-    <div className='text-2xl py-5 font-bold text-secondary text-center '>PORTFOLIO</div>
+    <div className='text-2xl py-5 font-bold text-secondary text-center '>MY PORTFOLIO</div>
       <hr />
   <div className='w-full bg-primary' style={{height:"20vh"}}>
   </div>
@@ -33,7 +33,7 @@ const Portfolio = () => {
     </div>
     
     <div className='w-full max-w-xs lg:max-w-6xl flex flex-col lg:flex-row'>
-      <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EDUCATION</span>
+      <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EDUCATION BACKGROUND</span>
       <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4 font-bold text-primary'>B.Sc in Computer Science and Engineering,National University</span>
     </div>
     <div className='w-full mt-5 bg-accent max-w-xs lg:max-w-6xl'>
@@ -52,6 +52,12 @@ const Portfolio = () => {
         <div className='flex p-5 justify-center' >
             <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>NODE JS</span>
             <progress className=" p-0 m-0 w-2/4 progress progress-info " value="60" max="100"></progress>
+        </div>
+
+        
+        <div className='flex p-5 justify-center' >
+            <span className='text-xs w-1/4 leading-none text-primary te font-bold mx-4'>MONGO DB</span>
+            <progress className=" p-0 m-0 w-2/4 progress progress-info " value="70" max="100"></progress>
         </div>
         
         <div className='flex p-5 justify-center' >

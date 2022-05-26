@@ -1,17 +1,20 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import Loading from '../../Shared/Loading';
 
 const AddProduct = () => {
 const { register, formState: { errors }, handleSubmit, reset } = useForm();
+const [loading,isLoading] = useState(false);
 const imageStorageKey ='c4bf02963d49b4ff00d8e4ee667bb305'
 const onSubmit= async(data)=>{
     const image = data.image[0];
     const formData = new FormData();
+    
     formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
-  
+  isLoading(true);
     fetch(url, {
         method: 'POST',
         body: formData
@@ -30,13 +33,26 @@ const onSubmit= async(data)=>{
             axios.post(`https://serene-meadow-57507.herokuapp.com/addProduct`,body,{
                 headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
             }).then(res=>{
-                console.log(res.data);
                 toast("Part Added SuccesFully")
+                isLoading(false);
                 reset()
             })
-              .catch(err=>{toast("Something Went Wrong")})           
+              .catch(err=>{toast("Something Went Wrong")
+              isLoading(false);})           
+        }
+        else{
+            toast("image couldn't upload");          
+        isLoading(false);
         }
     })
+    .catch(err=>{
+            toast("image couldn't upload!");          
+        isLoading(false);
+        
+    })
+}
+if(loading){
+    return <Loading></Loading>
 }
 
 return (

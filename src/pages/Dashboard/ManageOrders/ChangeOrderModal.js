@@ -8,9 +8,8 @@ import Loading from '../../Shared/Loading'
 
 const ChangeOrderModal = (props) => {
     const location = useLocation();
-    const {changeOrder,setChangeOrder,refetch}=props
+    const {changeOrder,setChangeOrder,isChangeLoading,refetch}=props
     const {user} = props
-    const [changeLoading,isChangeLoading] = useState(false);
     const handleDelete = () => {
         isChangeLoading(true);
         const authToken = localStorage.getItem('authToken');
@@ -24,6 +23,7 @@ const ChangeOrderModal = (props) => {
           .then(res=>{
             toast('ORDER SHIPPED SUCCESSFULL!');
             refetch();
+            setChangeOrder("")
             isChangeLoading(false);
           })
           .catch(err=>{
@@ -35,9 +35,6 @@ const ChangeOrderModal = (props) => {
             }
           })
     }  
- if(changeLoading){
-  return <Loading></Loading>
- }
 return (
   <div>
   <input type="checkbox" id="change-order-modal" className="modal-toggle" />

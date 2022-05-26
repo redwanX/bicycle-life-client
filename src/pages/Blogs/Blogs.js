@@ -71,7 +71,12 @@ const Blogs = () => {
                             console.log(item.name)
                             )
                         
+
                         `}
+                   </p>
+                   <p className='font-bold text-justify lg:text-lg text-xs'>
+                   Here I ittarate over each product and check if search word is included on it or not. then return it if availabe. I converted all word to lower case to more accutate search
+                        
                    </p>
                 </div>
             </div>

@@ -8,8 +8,7 @@ import Loading from '../../Shared/Loading'
 
 const ConfirmAdminModal = (props) => {
     const location = useLocation();
-    const {toAdmin,setToAdmin,refetch}=props
-    const [adminLoading,isAdminLoading] = useState(false);
+    const {toAdmin,setToAdmin,refetch,isAdminLoading}=props
     const confirmAdmin = () => {
         isAdminLoading(true);
         const authToken = localStorage.getItem('authToken');
@@ -33,9 +32,6 @@ const ConfirmAdminModal = (props) => {
         }
       })
     }  
-if(adminLoading){
-  return <Loading></Loading>
-}
 return (
     <div>
      <input type="checkbox" id="admin-confirm-modal" className="modal-toggle" />

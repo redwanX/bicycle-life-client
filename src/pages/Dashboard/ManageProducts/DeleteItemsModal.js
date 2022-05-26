@@ -8,8 +8,7 @@ import Loading from '../../Shared/Loading'
 
 const DeleteItemsModal = (props) => {
     const location = useLocation();
-    const {deleteItem,setDeleteItem,refetch}=props
-    const [deleteLoading,isDeleteLoading] = useState(false);
+    const {deleteItem,setDeleteItem,refetch,isDeleteLoading}=props
     const handleDelete = () => {
         console.log(deleteItem);
         isDeleteLoading(true);
@@ -24,6 +23,9 @@ const DeleteItemsModal = (props) => {
             isDeleteLoading(false);
             setDeleteItem("")
         }
+        else{
+          isDeleteLoading(false);
+        }
       })
       .catch(err=>{
         if(err.response.status ===401 || err.response.status ===403){
@@ -34,9 +36,6 @@ const DeleteItemsModal = (props) => {
         }
       })
     }  
- if(deleteLoading){
-  return <Loading></Loading>
- }
 return (
   <div>
   <input type="checkbox" id="delete-items-modal" className="modal-toggle" />

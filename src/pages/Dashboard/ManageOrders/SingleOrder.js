@@ -16,7 +16,7 @@ const SingleOrder = (props) => {
     <td>{qty}</td>
     <td>{parseInt(price) * parseInt(qty)}$</td>
     <td>{status==="unpaid"?"N/A":trans_Id}</td>
-    <td>{status==="unpaid"?<p className='text-red-400 font-bold'>UNPAID</p>:status==="approved"?<p className='text-primary font-bold'>SHIPPED</p>:<p className='text-primary font-bold'>PENDING</p>}</td>
+    <td>{status==="unpaid"?<p className='text-red-400 font-bold'>UNPAID</p>:status==="approved"?<p className='text-primary font-bold'>SHIPPED</p>:<p className='text-secondary font-bold'>PENDING</p>}</td>
     <td>{status ==="unpaid"?<>
         <label onClick={() => setDeleteOrder(_id)} htmlFor="delete-order-modal" className='btn btn-sm btn-error border-0 mb-1'>DELETE</label>
     

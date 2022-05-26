@@ -12,6 +12,7 @@ import Order from './Order';
 const MyOrder = () => {
    const [user,loading] = useAuthState(auth);
    const location = useLocation();
+   const [deleteLoading,isDeleteLoading] = useState(false);
    const [deleteOrder,setDeleteOrder] = useState('');
     const { data: orders, isLoading, refetch } = useQuery(['orders',user], () => axios.get(`https://serene-meadow-57507.herokuapp.com/order?email=${user?.user?.email || user?.email}`,{
       headers:{authorization: `Bearer ${localStorage.getItem('authToken')}`}
@@ -29,7 +30,7 @@ const MyOrder = () => {
     
            
       
-    if(loading || isLoading){
+    if(loading || isLoading || deleteLoading){
       return <Loading></Loading>
   }
 
@@ -56,7 +57,7 @@ const MyOrder = () => {
     </tbody>
   </table>
   {
-    deleteOrder && <DeleteModal deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} refetch={refetch}>
+    deleteOrder && <DeleteModal isDeleteLoading={isDeleteLoading} deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} refetch={refetch}>
     </DeleteModal>
   }
 </div>
