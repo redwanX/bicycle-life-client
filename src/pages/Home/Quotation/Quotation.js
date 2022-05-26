@@ -25,7 +25,9 @@ const Quotation = () => {
     const quantity = e.target.quantity.value;
     const requirement = e.target.requirement.value;
     const body ={email,parts,quantity,requirement}
-    
+    e.target.requirement.value=""
+    e.target.quantity.value=""
+    e.target.parts.value=""
     axios.post('https://serene-meadow-57507.herokuapp.com/quote',body)
     .then(res=>{
         if(res.data.insertedId){

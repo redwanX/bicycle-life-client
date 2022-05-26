@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { MdDoneAll  } from "react-icons/md";
+import { MdDoneAll,MdOutlineDoneAll  } from "react-icons/md";
 
 const SingleOrder = (props) => {
     const {image,name,price} = props.item.item;
@@ -23,8 +23,8 @@ const SingleOrder = (props) => {
         </>
         :
         status ==="approved"?
-        <p className='text-primary font-bold'>
-           N/A 
+        <p className='text-lime-600 text-2xl font-bold'>
+           <MdOutlineDoneAll></MdOutlineDoneAll> 
         </p>
         :
         <label onClick={() => setChangeOrder(props.item)} htmlFor="change-order-modal" className='btn btn-sm bg-primary border-0 mb-1'>SHIP</label>}</td>
