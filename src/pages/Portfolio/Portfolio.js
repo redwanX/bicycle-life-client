@@ -25,16 +25,16 @@ const Portfolio = () => {
   <div className='my-12 flex flex-col justify-center items-center'>
     <div className='w-full max-w-xs lg:max-w-6xl flex flex-col lg:flex-row'>
       <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>NAME</span>
-      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4 font-bold text-primary'>MD. REDWAN AHMED</span>
+      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4  lg:text-xl text-md font-bold text-primary'>MD. REDWAN AHMED</span>
     </div>
     <div className='w-full max-w-xs lg:max-w-6xl flex flex-col lg:flex-row'>
       <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EMAIL</span>
-      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4 font-bold text-primary'>redwan.ahmed.1298@gmail.com</span>
+      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4   lg:text-xl text-md font-bold text-primary'>redwan.ahmed.1298@gmail.com</span>
     </div>
     
     <div className='w-full max-w-xs lg:max-w-6xl flex flex-col lg:flex-row'>
       <span className='block bg-primary p-4 w-full lg:w-1/4 text-white text-center'>EDUCATION BACKGROUND</span>
-      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4 font-bold text-primary'>B.Sc in Computer Science and Engineering,National University</span>
+      <span className='block bg-accent p-4 w-full lg:text-left text-center lg:w-3/4   lg:text-xl text-md font-bold text-primary'>B.Sc in Computer Science and Engineering,National University</span>
     </div>
     <div className='w-full mt-5 bg-accent max-w-xs lg:max-w-6xl'>
         <div className='block bg-primary p-4 w-fulltext-white text-center font-bold text-accent'>SKILLS</div>
